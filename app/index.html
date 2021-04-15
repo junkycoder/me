@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>junkycoder</title>
+  <style>
+    html,
+    * {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+    }
+
+    body {
+      padding: .5rem;
+      max-width: 720px;
+      margin: 0 auto
+    }
+
+    body>header {
+      min-height: 20vh;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body>header h1 {
+      font-size: 2rem;
+    }
+
+    body>header form {
+      padding: .5rem;
+      display: flex;
+      gap: .5rem;
+      width: 100%;
+    }
+
+    body>header form>div:first-child {
+      flex: 1;
+      display: flex;
+    }
+
+    body>header form>div:first-child input {
+      flex: 1;
+    }
+
+    hr {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      margin: .5rem 0;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>junkycoder</h1>
-  <form method="POST" action=".">
-    <input type="text" name="input" />
-    <button type="submit">odeslat</button>
-  </form>
+  <header>
+    <h1>junkycoder</h1>
+    <form method="POST" action=".">
+      <div><input type="text" name="input" /></div>
+      <div><button type="submit">odeslat</button></div>
+    </form>
+  </header>
+  <hr />
+  <section>
+    <h2>Výsledky:</h2>
+    <p>Zatím nejsou.</p>
+  </section>
 </body>
+
 </html>
