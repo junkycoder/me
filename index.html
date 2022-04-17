@@ -48,15 +48,16 @@
       flex: 1;
     }
 
-    hr {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      margin: .5rem 0;
-    }
-
     h2 {
       font-size: 1.25rem;
+    }
+
+    .form-element {
+      padding: .5rem;
+      border: 1px solid lightgray;
+      background-color: transparent;
+      border-radius: .25rem;
+      color: black;
     }
   </style>
 </head>
@@ -65,11 +66,10 @@
   <header>
     <h1>junkycoder</h1>
     <form method="GET" action="/api/input">
-      <div><input type="search" name="input" /></div>
-      <div><button type="submit">odeslat</button></div>
+      <div><input class="form-element" type="search" name="input" /></div>
+      <div><button class="form-element" type="submit">odeslat</button></div>
     </form>
   </header>
-  <hr />
   <section>
     <h2>Výsledky:</h2>
     <p>Zatím nejsou.</p>
