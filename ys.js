@@ -26,8 +26,11 @@ async function server({ port = 8008, rootPath = "." } = {}) {
 
   async function handlaRequesta(req, res) {
     let filename = req.url.substring(1);
-    if (filename === "") {
-      filename = "index.html";
+    if (filename.split(".").length === 1) {
+      filename += "/";
+    }
+    if (filename === "" || filename.endsWith("/")) {
+      filename += "index.html";
     }
     const filepath = `${rootPath}/${filename}`;
 
