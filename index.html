@@ -7,16 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>junkycoder</title>
   <style>
-    html,
-    * {
+    :root {
+      --theme-background: white;
+      --theme-text: black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --theme-background: black;
+        --theme-text: white;
+      }
+    }
+
+    html, * {
       font-family: 'Courier New', monospace;
       font-size: 16px;
+      background-color: var(--theme-background);
+      color: var(--theme-text);
     }
 
     body {
       padding: .5rem;
       max-width: 720px;
-      margin: 0 auto
+      margin: 0 auto;
     }
 
     body > header {
@@ -57,7 +70,7 @@
       border: 1px solid lightgray;
       background-color: transparent;
       border-radius: .25rem;
-      color: black;
+      color: var(--color-text);
     }
   </style>
 </head>
