@@ -89,4 +89,9 @@ set sidescroll=1
 " Vim plugin configuration
 " ========================================
 "
-" TBD
+" Using https://github.com/tpope/vim-pathogen  so installation is ez as:
+"    cd ~/.vim/bundle && \
+"    git clone git@github.com:preservim/nerdtree.git
+"  
+execute pathogen#infect()
+
