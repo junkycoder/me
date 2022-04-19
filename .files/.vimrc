@@ -85,6 +85,11 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" =============== Copilot ===============
+set modifiable " for Copilot plugin
+let g:copilot_filetypes = { "*": v:true }
+command P Copilot panel
+
 " ========================================
 " Vim plugin configuration
 " ========================================
