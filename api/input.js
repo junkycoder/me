@@ -14,10 +14,9 @@ const port = parseInt(PORT, 10) || 8008;
 console.info(`http://localhost:${port}`);
 
 serve(async (req) => {
-  const id = `input-${crypto.randomUUID()}`;
-  
+  const id = crypto.randomUUID();
+
   try {
-    const input = await req.text();
     const redis = await connect({
       hostname: REDIS_HOST,
       port: REDIS_PORT,
@@ -25,29 +24,34 @@ serve(async (req) => {
       password: REDIS_PASS,
     });
 
-    await redis.set(id, input);
+    const url = new URL(req.url);
+    const params = new URLSearchParams(url.search);
+
+    if (params.has("q")) {
+      const query = encodeURI(params.get("q"));
+      await redis.set(`query-${id}`, query);
+
+      let target = `https://www.startpage.com/do/search`;
+      target += `?q=${query}&segment=startpage.brave`;
+
+      return new Response(
+        undefined,
+        {
+          status: Status.Found,
+          headers: { location: target }
+        }
+      );
+    } 
+
+    if (req.method === "POST") {
+      const input =  await req.text();
+      await redis.set(`input-${id}`, input);
+    }
+    return new Response("THX");
+
   } catch (O_o) {
     console.error(O_o);
     return new Response("SRY");
   }
-
-  const url = new URL(req.url);
-  const params = new URLSearchParams(url.search);
-
-  if (params.has("q")) {
-    const query = encodeURI(params.get("q"));
-    let target = `https://www.startpage.com/do/search`;
-    target += `?q=${query}&segment=startpage.brave`;
-
-    return new Response(
-      undefined,
-      {
-        status: Status.Found,
-        headers: { location: target }
-      }
-    );
-  } 
-
-  return new Response("THX");
 }, { port });
 
