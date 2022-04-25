@@ -90,6 +90,11 @@ set modifiable " for Copilot plugin
 let g:copilot_filetypes = { "*": v:true }
 command P Copilot panel
 
+" ================ Fixes ========================
+
+" https://vi.stackexchange.com/a/28721
+set re=2 " fix freezing vim on TS files
+
 " ========================================
 " Vim plugin configuration
 " ========================================
